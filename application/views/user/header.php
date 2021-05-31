@@ -114,7 +114,7 @@
 
                             <div class="dropdown-menu">
                                 <a href="<?= base_url()?>index.php/User/Login " class="dropdown-item">Login</a>
-                                <a href="<?= base_url() ?>index.php/Register " class="dropdown-item">Register</a>
+                                <a href="<?= base_url() ?>index.php/User/Register " class="dropdown-item">Register</a>
                                 <a href="<?= base_url() ?>index.php/User/Logout" class="dropdown-item">Logout</a>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                 </div>
                 <div class="col-md-6">
                     <!-- Xử lý tìm kiếm theo tên sản phẩm -->
-                    <form action="<?= base_url()?>index.php/Search" method="post">
+                    <form action="<?= base_url()?>index.php/User/Search" method="post">
                         <div class="search">
                             <input type="text" name="search" placeholder="Search">
                             <button><i class="fa fa-search"></i></button>

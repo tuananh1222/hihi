@@ -22,29 +22,39 @@ class Login extends CI_Controller {
 			$result = $this->QL_ND->checkLogin($dlieu);				
 				if($result == true){
 					   $tbao= $this->QL_ND->user();
-					  foreach ($tbao as $row)
-						   if ($dlieu['username']==$row->username ) {
+					foreach ($tbao as $row) {
+						   if ($dlieu['username']==$row->username && $row->level == 0 ) {
 								 //Lưu tên đăng nhập
 								 $_SESSION['tb'] = $row->fullname;
 								 $_SESSION['em'] = $row->email; 
-								 $_SESSION['id']=$row->id_account; 								
-								   
+								 $_SESSION['id']=$row->id_account;
+								echo '<script language="javascript">';
+								echo 'alert("Thành công")';
+								echo '</script>';
+								header('location:http://localhost/hihi/index.php/User/user'); 							   
 						  }
-				 	echo '<script language="javascript">';
-				  echo 'alert("Thành công")';
-				  echo '</script>';
-				 				 
+						  else{
+							if ($dlieu['username']==$row->username && $row->level == 1 ) {
+								//Lưu tên đăng nhập
+								$_SESSION['tb1'] = $row->fullname;
+								$_SESSION['em'] = $row->email; 
+								$_SESSION['id']	= $row->id_account;
+							   echo '<script language="javascript">';
+							   echo 'alert("Thành công")';
+							   echo '</script>';
+							   header('location:http://localhost/hihi/index.php/admin/admin');
+						  }	
+				 		}
 					}
-				  else{
-	   			echo '<script language="javascript">';
-				  echo 'alert("Thất bại")';
-				  echo '</script>';
-		
-	  
-				}} 
-		
+				}
+				 	else
+					 {
+						echo '<script language="javascript">';
+						echo 'alert("Thất bại")';
+						echo '</script>';
+					} 		
+		}
 	}
-
 }
 
 /* End of file Login.php */

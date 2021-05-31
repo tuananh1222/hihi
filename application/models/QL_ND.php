@@ -48,6 +48,26 @@ class QL_ND extends CI_Model {
 									(NULL, '$fullname', '$phone', '$email','$username','$password', '0')";
 		$this->db->query($query);
     }
+
+	public function checkLogin($dl)
+    {
+        $condition = "username =" . "'" . $dl['username'] . "' AND " . "password =" . "" . $dl['password'] ;
+        $this->db->select('*');
+        $this->db->from('tb_account');
+        $this->db->where($condition);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+        return true;
+        } else {
+        return false;
+        }
+    }
+	
+	public function user() {
+        $query = $this->db->query('SELECT * FROM tb_account');
+        return $query->result();
+     }
     
 
 }

@@ -7,27 +7,24 @@ public function index(){
  
 
 	$data= array( 
-		' firstname'=>$this->input->post('firstname'),
-		' lastname'=>$this->input->post('lastname'),
-
-		'email'=>($this->input->post('email')),
-		'mobile'=>$this->input->post('mobile'),
-		'picture'=>$_SESSION['picture'],
-		'password'=>($this->input->post('password'))
+		'fullname'=>$this->input->post('fullname'),
+		'email'=>$this->input->post('email'),
+		'phone'=>$this->input->post('phone'),
+		'username'=>$this->input->post('username'),				
+		'password'=>$this->input->post('password'),	
+		'level' => 0	
 	);
- 
 
-$this->db->insert('dangnhap',$data);
-$userid=$this->db->insert_id();//Lấy ID vừa insert được chính là user id.
-return $userid;
-
+	$this->db->insert('tb_wait_account',$data);
+	$userid=$this->db->insert_id();//Lấy ID vừa insert được chính là user id.
+	return $userid;
 }
 
 public function check_email($email){
 	// $email=($this->input->post('email'));
-	$condition = "email =" . "'" . $email ."'";
+		$condition = "email =" . "'" . $email ."'";
 		$this->db->select('*');
-		$this->db->from('dangnhap');
+		$this->db->from('tb_wait_account');
 		$this->db->where($condition);
 		$this->db->limit(1);
 		$query = $this->db->get();

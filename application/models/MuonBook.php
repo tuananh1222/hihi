@@ -17,8 +17,8 @@ class MuonBook extends CI_Model {
 		$ngaytra=$_POST['ngaytra'];
 		$quanlythuvien=$_POST['quanlythuvien'];
 
-		$query = "insert into tb_muontra (	id_muon, masach, id_account, ngaymuon, ngaytra, quanlythuvien ) values 
-									(NULL, '$masach', '$id_account', '$ngaymuon','$ngaytra','$quanlythuvien')";
+		$query = "insert into tb_wait_muontra (	id_muon, masach, id_account, ngaymuon, ngaytra, quanlythuvien ) values 
+									(NULL, '$masach', $id_account, '$ngaymuon','$ngaytra','$quanlythuvien')";
 		$this->db->query($query);
     }
 	
